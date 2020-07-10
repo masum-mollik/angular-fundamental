@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-fundamentals-seed"
+    }
+  },
+  "defaultProject": "angular-fundamentals-seed",
+  "cli": {
+    "analytics": "cf2a0a90-2ba4-40af-98da-dcfcd8ef9afe"
+  }
 }
