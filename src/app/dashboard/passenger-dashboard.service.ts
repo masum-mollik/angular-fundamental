@@ -4,6 +4,7 @@ import { Passenger } from './passenger.interface';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { retry } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
 
 interface Response {
   data: [];
@@ -14,9 +15,10 @@ export class PassengerDashboardService {
     console.log(this.httpClient);
   }
 
-  url = 'http://dummy.restapiexample.com/api/v1/employees';
   getResponse(): Observable<any> {
-    return this.httpClient.get(this.url).pipe(
+    const url = 'http://dummy.restapiexample.com/api/v1/employees';
+
+    return this.httpClient.get(url).pipe(
       map((response: Response) => {
         return response.data;
       }),
@@ -25,9 +27,28 @@ export class PassengerDashboardService {
       })
     );
   }
+  updateEmployeeUrl(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+    const url = 'http://dummy.restapiexample.com/api/v1/update/675676';
+    return this.httpClient.put(url, {}, httpOptions).pipe(
+      map((response: Response) => {
+        return response;
+      }),
+      catchError((err) => {
+        return err;
+      })
+    );
+  }
 
   getPassengers(): Passenger[] {
-    this.getResponse().subscribe((value) => console.log('value', value));
+    this.updateEmployeeUrl().subscribe(
+      (res) => console.log('update', res),
+      (err) => console.log(err)
+    );
     return [
       {
         id: 1,
