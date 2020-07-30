@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Passenger} from '../../passenger.interface';
+import {FormBuilder} from '@angular/forms';
+
 
 @Component({
   selector: 'app-passenger-form',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./passenger-form.component.scss']
 })
 export class PassengerFormComponent implements OnInit {
+  @Input()
+  passenger: Passenger;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  toggleChange = (checkedIn: boolean) => {
+    if (checkedIn) {
+      this.passenger.checkInDate = Date.now();
+    }
   }
 
 }
