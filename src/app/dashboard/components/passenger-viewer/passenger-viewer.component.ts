@@ -9,13 +9,14 @@ import {Passenger} from '../../passenger.interface';
 })
 export class PassengerViewerComponent implements OnInit {
   hello = 30;
+  passenger: Passenger;
 
   constructor(private passengerService: PassengerDashboardService) {
-
   }
 
 
   ngOnInit(): void {
+    this.passengerService.getPassenger(1).subscribe((passenger: Passenger) => this.passenger = passenger);
   }
 
 }

@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Passenger } from './../passenger.interface';
+import {Passenger} from './../passenger.interface';
 
 @Component({
   selector: 'app-passenger-details',
@@ -46,11 +46,10 @@ import { Passenger } from './../passenger.interface';
         >
           Checked in date:
           {{
-            passenger.checkInDate
-              ? (passenger.checkInDate | date: 'yMMMMd' | uppercase)
-              : ('Not checked in' | uppercase)
-          }}, Number of children {{ passenger.children?.length || 0 }}
-        </span>
+          passenger.checkInDate
+            ? (passenger.checkInDate | date: 'yMMMMd' | uppercase)
+            : ('Not checked in' | uppercase)
+          }},         </span>
       </div>
     </div>
   `,
@@ -72,22 +71,23 @@ export class PassengerDetailsComponent implements OnChanges {
       this.edit.emit(this.passenger);
     }
     this.editing = !this.editing;
-  };
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.passenger) {
       this.passenger = Object.assign({}, changes.passenger.currentValue);
     }
   }
+
   onRemove = () => {
     this.remove.emit(this.passenger);
-  };
+  }
 
   onEdit = () => {
     this.edit.emit(this.passenger);
-  };
+  }
 
   onNameChange = (name: string) => {
     this.passenger.fullName = name;
-  };
+  }
 }

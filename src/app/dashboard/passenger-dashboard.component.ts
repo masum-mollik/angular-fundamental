@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Passenger } from './passenger.interface';
-import { PassengerDashboardService } from './passenger-dashboard.service';
+import {Component, OnInit} from '@angular/core';
+import {Passenger} from './passenger.interface';
+import {PassengerDashboardService} from './passenger-dashboard.service';
 
 @Component({
   selector: 'app-passenger-dashboard',
@@ -28,17 +28,20 @@ import { PassengerDashboardService } from './passenger-dashboard.service';
 export class PassengerDashboardComponent implements OnInit {
   passengers: Passenger[];
   employees: [];
-  constructor(private passengerService: PassengerDashboardService) {}
+
+  constructor(private passengerService: PassengerDashboardService) {
+  }
 
   ngOnInit(): void {
     console.log('====================================');
     console.log('onInit');
     console.log('====================================');
-    this.passengers = this.passengerService.getPassengers();
+    this.passengerService.getPassengers().subscribe(response => this.passengers = response);
     this.passengerService.getResponse().subscribe((value) => {
       this.employees = value;
     });
   }
+
   handleRemove = (event: Passenger) => {
     this.passengers = this.passengers.filter((passenger: Passenger) => {
       return passenger.id !== event.id;
