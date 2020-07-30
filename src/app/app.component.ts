@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 interface Child {
   name: string;
   age: number;
 }
+
 interface Passenger {
   id: number;
   fullName: string;
@@ -17,8 +18,9 @@ interface Passenger {
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-      <app-passenger-dashboard></app-passenger-dashboard>
+      <app-passenger-viewer></app-passenger-viewer>
     </div>
   `,
 })
-export class AppComponent {}
+export class AppComponent {
+}

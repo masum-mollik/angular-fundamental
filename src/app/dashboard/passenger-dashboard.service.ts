@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Passenger } from './passenger.interface';
-import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { retry } from 'rxjs/operators';
-import { HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Passenger} from './passenger.interface';
+import {Observable} from 'rxjs';
+import {map, catchError} from 'rxjs/operators';
+import {HttpHeaders} from '@angular/common/http';
 
 interface Response {
   data: [];
 }
+
 @Injectable()
 export class PassengerDashboardService {
   constructor(private httpClient: HttpClient) {
@@ -27,6 +27,7 @@ export class PassengerDashboardService {
       })
     );
   }
+
   updateEmployeeUrl(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -45,10 +46,7 @@ export class PassengerDashboardService {
   }
 
   getPassengers(): Passenger[] {
-    this.updateEmployeeUrl().subscribe(
-      (res) => console.log('update', res),
-      (err) => console.log(err)
-    );
+
     return [
       {
         id: 1,
@@ -63,8 +61,8 @@ export class PassengerDashboardService {
         checkedIn: false,
         checkInDate: null,
         children: [
-          { name: 'Ted', age: 12 },
-          { name: 'Chloe', age: 7 },
+          {name: 'Ted', age: 12},
+          {name: 'Chloe', age: 7},
         ],
       },
       {
@@ -79,7 +77,7 @@ export class PassengerDashboardService {
         fullName: 'Louise',
         checkedIn: true,
         checkInDate: 1488412800000,
-        children: [{ name: 'Jessica', age: 1 }],
+        children: [{name: 'Jessica', age: 1}],
       },
       {
         id: 5,
