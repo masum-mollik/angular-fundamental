@@ -1,16 +1,9 @@
 import {Component} from '@angular/core';
 
-interface Child {
+interface Nav {
+  link: string;
   name: string;
-  age: number;
-}
-
-interface Passenger {
-  id: number;
-  fullName: string;
-  checkedIn: boolean;
-  checkInDate?: number;
-  children: Child[];
+  exact: boolean;
 }
 
 @Component({
@@ -20,21 +13,29 @@ interface Passenger {
     <div class="app">
       <nav class="nav">
         <a
-          routerLink="/"
+          *ngFor="let navItem of nav"
+          [routerLink]="navItem.link"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">
-          home
+          [routerLinkActiveOptions]="{ exact: navItem.exact }">
+          {{navItem.name}}
         </a>
-        <a
-          routerLink="/oops"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">
-          404
-        </a>
+
       </nav>
       <router-outlet></router-outlet>
     </div>
   `,
 })
 export class AppComponent {
+  nav: Nav[] = [
+    {
+      link: '/',
+      name: 'home',
+      exact: true
+    },
+    {
+      link: '/oops',
+      name: '404',
+      exact: true
+    },
+  ];
 }
