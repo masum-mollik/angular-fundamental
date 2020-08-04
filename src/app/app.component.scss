@@ -1,20 +1,18 @@
-.app {
-  display: block;
-}
+.nav {
+  margin: 0 0 10px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid #dce5f2;
 
-.status {
-  width: 15px;
-  height: 15px;
-  display: block;
-  margin: 0px 10px 0px 10px;
-  float: left;
-  border-radius: 50%;
+  a {
+    background: #3a4250;
+    color: #fff;
+    padding: 4px 10px;
+    margin: 0 2px;
+    border-radius: 2px;
 
-  &.checked-in {
-    background: #2ecc71;
-  }
-
-  &.checked-out {
-    background-color: red;
+    &.active {
+      color: #b690f1;
+      background: #363c48;
+    }
   }
 }
