@@ -18,6 +18,9 @@ interface Passenger {
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
+      <div>
+        go to <a routerLink="/oops">not Found page</a>
+      </div>
       <router-outlet></router-outlet>
     </div>
   `,
