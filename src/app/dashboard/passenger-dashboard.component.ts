@@ -12,9 +12,7 @@ import {PassengerDashboardService} from './passenger-dashboard.service';
       <div *ngFor="let passenger of passengers">
         {{ passenger.fullName }}
       </div>
-      <div *ngFor="let employee of employees">
-        {{ employee?.employee_name }}
-      </div>
+
 
       <app-passenger-details
         *ngFor="let passenger of passengers"
